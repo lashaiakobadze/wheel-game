@@ -3,8 +3,6 @@ import './App.css';
 import GameOptionsTab from './ui/GameOptionsTab/GameOptionsTab';
 import RangeSlider from './ui/RangeSlider/RangeSlider';
 import Button from './ui/Button';
-import CustomGameGrid from './components/CustomGameGrid/CustomGameGrid';
-import RowColSelector from './ui/RowColSelector/RowColChooser';
 import Wins from './components/Wins/Wins';
 
 enum GameStatus {
@@ -30,14 +28,14 @@ function App() {
 
   const [amount, setAmount] = useState<string | number>(5);
 
-  const [mines, setMines] = useState(undefined);
+  const [row, setRow] = useState(10);
   const [isAmountInputFocused, setIsAmountInputFocused] = useState(false);
 
   // FUNCTIONS
   const saveGameState = () => {
     const gameState = {
       amount,
-      mines,
+      row,
     };
     localStorage.setItem('gameState', JSON.stringify(gameState));
   };
@@ -45,13 +43,13 @@ function App() {
   const loadGameState = () => {
     const savedGameState = localStorage.getItem('gameState');
     if (savedGameState) {
-      const { amount, mines } =
+      const { amount, row } =
         JSON.parse(savedGameState);
       setAmount(amount);
-      setMines(mines);
+      // setRow(row);
     } else {
       setAmount('5');
-      setMines(5);
+      // setRow(5);
     }
   };
 
@@ -86,14 +84,14 @@ function App() {
     value = value.replace(/[^0-9]/g, ''); // Only digits
     value = value.replace(/^0+(\d)/, '$1'); // Remove leading zeros if followed by digits
 
-    setMines(() => value);
+    setRow(() => +value);
   };
 
   // HOOKS
   useEffect(() => {
-    loadGameState();
-    loadGameData();
-    fetchHistory();
+    // loadGameState();
+    // loadGameData();
+    // fetchHistory();
   }, []);
 
   useEffect(() => {
@@ -102,18 +100,18 @@ function App() {
     } else {
       saveGameState();
     }
-  }, [mines, amount]);
+  }, [row, amount]);
 
   // HTTP requests
   const fetchHistory = () => {
-    fetch(`${apiUrl}/api/mines/history?userId=123`)
+    fetch(`${apiUrl}/api/row/history?userId=123`)
       .then((response) => response.json())
       .then((data) => setHistory(data))
       .catch((error) => console.error('Error:', error));
   };
 
   const startGame = () => {
-    fetch(`${apiUrl}/api/mines/new?mines=${mines}`, {
+    fetch(`${apiUrl}/api/row/new?row=${row}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -131,7 +129,7 @@ function App() {
   };
 
   const cashOut = () => {
-    fetch(`${apiUrl}/api/mines/cashout?gameId=${gameData.gameId}`, {
+    fetch(`${apiUrl}/api/row/cashout?gameId=${gameData.gameId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -189,13 +187,13 @@ function App() {
             </div>
           </div>
           <div className="games-options__mines">
-            <h2>Rows</h2>
-            {mines && (
+            <h2>Row {row}</h2>
+            {row && (
               <>
                 <RangeSlider
-                  min="10"
+                  min={10}
                   max={50}
-                  value={mines}
+                  value={row}
                   disabled={gameData?.gameStatus === GameStatus.PROGRESS}
                   onChange={(e) => {
                     handleMinesChange(e);

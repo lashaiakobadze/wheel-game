@@ -1,4 +1,13 @@
-.range-slider-input {
+.rangeSlider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  color: white;
+}
+
+.rangeSliderInput {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -11,7 +20,7 @@
   cursor: pointer;
 }
 
-.range-slider-input::-webkit-slider-thumb {
+.rangeSliderInput::-webkit-slider-thumb {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;

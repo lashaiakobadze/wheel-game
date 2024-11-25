@@ -125,17 +125,6 @@ input[type='number'] {
   margin-bottom: 8px;
 }
 
-.row-col-selector-content {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.row-col-selector-content h4 {
-  color: rgb(var(--secondary) / 1);
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
 .game-content {
   border-radius: 0 8px 8px 0;
   position: relative;
