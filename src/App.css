@@ -44,11 +44,10 @@ body {
 
 .games-options__content {
   width: 100%;
-  margin-top: 12px;
+  margin-top: 16px;
   padding: 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
 }
 
@@ -67,6 +66,12 @@ body {
   border-radius: 8px;
   padding: 4px;
   transition: border-color 0.3s ease;
+} 
+
+.games-options__content h2 {
+  color: rgb(var(--secondary) / 1);
+  font-size: 16px;
+  margin-bottom: 8px;
 }
 
 .focused {
@@ -114,9 +119,13 @@ input[type='number'] {
   background-color: rgb(var(--layer6));
 }
 
-.games-options__row, .games-options__segmented-tabs {
+.games-options__row {
+  margin: 36px 0;
+}
+
+.games-options__segmented-tabs {
   width: 100%;
-  margin: 24px 0;
+  margin-bottom: 36px;
 }
 
 .games-options__row h2, .games-options__segmented-tabs h2 {

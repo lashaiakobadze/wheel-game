@@ -154,6 +154,8 @@ function App() {
         <GameOptionsTab />
 
         <div className="games-options__content">
+          <h2>Amount</h2>
+
           <div
             className={`games-options__amount ${isAmountInputFocused ? 'focused' : ''}`}
           >
@@ -192,7 +194,7 @@ function App() {
           </div>
 
           <div className="games-options__row">
-            <h2>Row {row}</h2>
+            <h2>Row</h2>
             {row && (
               <>
                 <RangeSlider

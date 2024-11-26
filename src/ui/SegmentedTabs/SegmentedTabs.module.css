@@ -1,7 +1,6 @@
 .segmentedTabs {
   display: flex;
   border-radius: 10px;
-  padding: 4px;
   justify-content: space-between;
   align-items: center;
 }
