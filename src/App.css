@@ -114,12 +114,12 @@ input[type='number'] {
   background-color: rgb(var(--layer6));
 }
 
-.games-options__mines {
+.games-options__row, .games-options__segmented-tabs {
   width: 100%;
   margin: 24px 0;
 }
 
-.games-options__mines h2 {
+.games-options__row h2, .games-options__segmented-tabs h2 {
   color: rgb(var(--secondary) / 1);
   font-size: 16px;
   margin-bottom: 8px;

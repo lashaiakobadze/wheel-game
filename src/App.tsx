@@ -4,6 +4,8 @@ import GameOptionsTab from './ui/GameOptionsTab/GameOptionsTab';
 import RangeSlider from './ui/RangeSlider/RangeSlider';
 import Button from './ui/Button';
 import Wins from './components/Wins/Wins';
+import SegmentedTabs from './ui/SegmentedTabs/SegmentedTabs';
+import { SegmentedEnum } from './ui/SegmentedTabs/SegmentedTabs.enum';
 
 enum GameStatus {
   WIN = 'WIN',
@@ -27,6 +29,8 @@ function App() {
   const [history, setHistory] = useState([]);
 
   const [amount, setAmount] = useState<string | number>(5);
+  const [segment, setSegment] = useState<SegmentedEnum>(SegmentedEnum.Low);
+
 
   const [row, setRow] = useState(10);
   const [isAmountInputFocused, setIsAmountInputFocused] = useState(false);
@@ -186,7 +190,8 @@ function App() {
               </button>
             </div>
           </div>
-          <div className="games-options__mines">
+
+          <div className="games-options__row">
             <h2>Row {row}</h2>
             {row && (
               <>
@@ -203,6 +208,14 @@ function App() {
                 />
               </>
             )}
+          </div>
+
+          <div className="games-options__segmented-tabs">
+            <h2>Segment</h2>
+              <SegmentedTabs
+                selected={segment}
+                onSelect={(option) => setSegment(option)}
+              />
           </div>
 
           {gameData?.gameStatus === GameStatus.PROGRESS ? (
